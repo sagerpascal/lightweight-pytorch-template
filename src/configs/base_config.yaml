@@ -1,0 +1,25 @@
+use_wandb: False
+
+# Environment
+env:
+  world_size: 1 # number of GPUs to run a batch in parallel
+
+# Training settings
+train:
+  batch_size: 32
+
+# Optimizer
+optimizer:
+  type: adam
+  lr: 0.0001
+
+  adam:
+    weight_decay: 0.0001
+  sgd:
+    momentum: 0.9
+
+# LR Scheduler
+lr_scheduler:
+  activate: False
+  step_size: 20
+  gamma: 0.8
