@@ -4,6 +4,11 @@ use_wandb: False
 env:
   world_size: 1 # number of GPUs to run a batch in parallel
 
+# Datasets & Loader
+dataloader:
+  num_workers: 4
+
+
 # Training settings
 train:
   batch_size: 32
