@@ -12,6 +12,7 @@ dataloader:
 # Training settings
 train:
   batch_size: 32
+  loss: BCEWithLogitsLoss
 
 # Optimizer
 optimizer:

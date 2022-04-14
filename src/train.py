@@ -8,9 +8,10 @@ import torch.distributed as dist
 import wandb
 from torch.nn.parallel import DistributedDataParallel as DDP
 
-from dataloader import get_loaders
-from losses.loss import get_loss
-from metrics import get_metrics
+from tools.dataloader import get_loaders
+from tools.epochs import TrainEpoch, ValidEpoch
+from tools.losses import get_loss
+from tools.metrics import get_metrics
 from models.model import get_model
 from tools.optimizers import get_optimizer, get_lr
 from utils.ddp import setup, cleanup
@@ -135,7 +136,6 @@ def train(rank=None, mport=None, store_port=None, world_size=None, conf=None):
         optimizer=optimizer,
         device=device,
         verbose=is_main_process,
-        conf=conf
     )
 
     valid_epoch = ValidEpoch(
@@ -144,7 +144,6 @@ def train(rank=None, mport=None, store_port=None, world_size=None, conf=None):
         metrics=metrics,
         device=device,
         verbose=is_main_process,
-        conf=conf
     )
 
     wandb_run = None
